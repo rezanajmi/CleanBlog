@@ -1,25 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ADDC7BD4-935F-4577-9CD9-6AAA016B836B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanBlog.Web", "src\CleanBlog.Web\CleanBlog.Web.csproj", "{297457C6-6F39-4A21-A975-44B0328DCFC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanBlog.Web", "src\CleanBlog.Web\CleanBlog.Web.csproj", "{297457C6-6F39-4A21-A975-44B0328DCFC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanBlog.Application", "src\CleanBlog.Application\CleanBlog.Application.csproj", "{58C47B01-E3FE-4394-A2CC-A315B6D3C90D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanBlog.Application", "src\CleanBlog.Application\CleanBlog.Application.csproj", "{58C47B01-E3FE-4394-A2CC-A315B6D3C90D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanBlog.Domain", "src\CleanBlog.Domain\CleanBlog.Domain.csproj", "{5E93A069-6926-42E4-8305-8B1B62CE3D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanBlog.Domain", "src\CleanBlog.Domain\CleanBlog.Domain.csproj", "{5E93A069-6926-42E4-8305-8B1B62CE3D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanBlog.Infrastructure", "src\CleanBlog.Infrastructure\CleanBlog.Infrastructure.csproj", "{DC3C719B-960C-4E17-B6FE-8DEE704626A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanBlog.Infrastructure", "src\CleanBlog.Infrastructure\CleanBlog.Infrastructure.csproj", "{DC3C719B-960C-4E17-B6FE-8DEE704626A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9474DF2D-D6A8-4D5C-BC0C-5ECB38951D54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanBlog.UnitTests", "tests\CleanBlog.UnitTests\CleanBlog.UnitTests.csproj", "{66A6A246-4AC4-4234-ABFD-781A617E0AB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{297457C6-6F39-4A21-A975-44B0328DCFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -38,11 +39,22 @@ Global
 		{DC3C719B-960C-4E17-B6FE-8DEE704626A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC3C719B-960C-4E17-B6FE-8DEE704626A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC3C719B-960C-4E17-B6FE-8DEE704626A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66A6A246-4AC4-4234-ABFD-781A617E0AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A6A246-4AC4-4234-ABFD-781A617E0AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A6A246-4AC4-4234-ABFD-781A617E0AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A6A246-4AC4-4234-ABFD-781A617E0AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{297457C6-6F39-4A21-A975-44B0328DCFC0} = {ADDC7BD4-935F-4577-9CD9-6AAA016B836B}
 		{58C47B01-E3FE-4394-A2CC-A315B6D3C90D} = {ADDC7BD4-935F-4577-9CD9-6AAA016B836B}
 		{5E93A069-6926-42E4-8305-8B1B62CE3D26} = {ADDC7BD4-935F-4577-9CD9-6AAA016B836B}
 		{DC3C719B-960C-4E17-B6FE-8DEE704626A1} = {ADDC7BD4-935F-4577-9CD9-6AAA016B836B}
+		{66A6A246-4AC4-4234-ABFD-781A617E0AB1} = {9474DF2D-D6A8-4D5C-BC0C-5ECB38951D54}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36227825-6DC9-4458-99EA-0F79C124258D}
 	EndGlobalSection
 EndGlobal

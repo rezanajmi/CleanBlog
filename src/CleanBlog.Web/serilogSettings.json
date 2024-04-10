@@ -1,0 +1,18 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.File" ],
+    "MinimumLevel": {
+      "Default": "Warning"
+    },
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "path": "logs/log-.log",
+          "rollingInterval": "Day",
+          "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} {Level:u3}{NewLine}Message: {Message:lj}{NewLine}{NewLine}Exception: {Exception}{NewLine}------------------------------{NewLine}"
+        }
+      }
+    ]
+  }
+}
