@@ -1085,30 +1085,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\30128151\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\REZA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Training\\CleanBlog\\src\\CleanBlog.Domain\\CleanBlog.Domain.csproj",
+      "projectUniqueName": "F:\\Programming\\Projects\\CleanBlog\\src\\CleanBlog.Domain\\CleanBlog.Domain.csproj",
       "projectName": "CleanBlog.Domain",
-      "projectPath": "G:\\Training\\CleanBlog\\src\\CleanBlog.Domain\\CleanBlog.Domain.csproj",
-      "packagesPath": "C:\\Users\\30128151\\.nuget\\packages\\",
-      "outputPath": "G:\\Training\\CleanBlog\\src\\CleanBlog.Domain\\obj\\",
+      "projectPath": "F:\\Programming\\Projects\\CleanBlog\\src\\CleanBlog.Domain\\CleanBlog.Domain.csproj",
+      "packagesPath": "C:\\Users\\REZA\\.nuget\\packages\\",
+      "outputPath": "F:\\Programming\\Projects\\CleanBlog\\src\\CleanBlog.Domain\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\30128151\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\REZA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1121,6 +1117,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1178,7 +1179,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }
