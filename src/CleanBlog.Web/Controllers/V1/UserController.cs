@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using AutoMapper;
 using CleanBlog.Application.Commands.User;
 using CleanBlog.Application.Queries.User;
@@ -43,6 +44,21 @@ namespace CleanBlog.Web.Controllers.V1
 
             var result = await mediator.Send(mapper.Map<CreateUserCommand>(request), ct);
             return SendCreated("", null);
+        }
+
+        [HttpGet("validateToken")]
+        [MapToApiVersion("1.0")]
+        public async Task<IActionResult> ValidateToken(CancellationToken ct = default)
+        {
+            return SendOk();
+        }
+
+        [HttpGet]
+        [MapToApiVersion("1.0")]
+        public async Task<IActionResult> GetByToken(CancellationToken ct = default)
+        {
+            var result = await mediator.Send(new GetUserByIdQuery());
+            return SendOk(result);
         }
 
         [HttpPut]

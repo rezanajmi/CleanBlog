@@ -5,12 +5,14 @@ namespace CleanBlog.Application.Results.Category
     {
         public object Id { get; set; }
         public string Title { get; set; }
+        public int? ParentId { get; set; }
         public string ParentTitle { get; set; }
 
-        public GetCategoriesResult(object id, string title, string parentTile)
+        public GetCategoriesResult(object id, string title, int? parentId, string parentTile)
         {
             Id = id;
             Title = title;
+            ParentId = parentId;
             ParentTitle = parentTile;
         }
     }

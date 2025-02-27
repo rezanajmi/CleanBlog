@@ -26,50 +26,55 @@ namespace CleanBlog.Infrastructure.Bus
             };
         }
 
-        public void Publish<TEvent>(TEvent @event) where TEvent : IBusEvent
+        public async Task Publish<TEvent>(TEvent @event, CancellationToken ct = default) where TEvent : IBusEvent
         {
-            using var connection = connectionFactory.CreateConnection();
+            using var connection = await connectionFactory.CreateConnectionAsync(ct);
 
-            using var channel = connection.CreateModel();
+            using var channel = await connection.CreateChannelAsync(cancellationToken: ct);
 
             var eventName = @event.GetType().Name;
 
-            channel.QueueDeclare(
+            await channel.QueueDeclareAsync(
                         queue: eventName,
                         durable: false,
                         exclusive: false,
                         autoDelete: false,
-                        arguments: null
+                        arguments: null,
+                        noWait: false,
+                        cancellationToken: ct
                     );
 
             var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event));
 
-            channel.BasicPublish(
+            await channel.BasicPublishAsync(
                 exchange: "",
                 routingKey: eventName,
-                basicProperties: null,
-                body: body
-            );
+                body: body,
+                cancellationToken: ct
+                );
         }
 
-        public void Subscribe<TEvent>() where TEvent : class
+        public async Task Subscribe<TEvent>(CancellationToken ct = default) where TEvent : class
         {
-            var connection = connectionFactory.CreateConnection();
+            var connection = await connectionFactory.CreateConnectionAsync(ct);
 
-            var channel = connection.CreateModel();
+            var channel = await connection.CreateChannelAsync(cancellationToken: ct);
 
             var eventType = typeof(TEvent);
 
-            channel.QueueDeclare(
+            await channel.QueueDeclareAsync(
                 queue: eventType.Name,
                 durable: false,
                 exclusive: false,
                 autoDelete: false,
-                arguments: null);
+                arguments: null,
+                noWait: false,
+                cancellationToken: ct
+                );
 
-            var consumer = new EventingBasicConsumer(channel);
+            var consumer = new AsyncEventingBasicConsumer(channel);
 
-            consumer.Received += (sender, eventArgs) =>
+            consumer.ReceivedAsync += async (sender, eventArgs) =>
             {
                 try
                 {
@@ -78,7 +83,7 @@ namespace CleanBlog.Infrastructure.Bus
 
                     var @event = JsonConvert.DeserializeObject(message, eventType) as IBusEvent;
 
-                    mediator.Publish(@event);
+                    await mediator.Publish(@event, ct);
                 }
                 catch (Exception exc)
                 {
@@ -87,7 +92,12 @@ namespace CleanBlog.Infrastructure.Bus
                 }
             };
 
-            channel.BasicConsume(queue: eventType.Name, autoAck: true, consumer: consumer);
+            await channel.BasicConsumeAsync(
+                queue: eventType.Name,
+                autoAck: true,
+                consumer: consumer,
+                cancellationToken: ct
+                );
         }
     }
 }

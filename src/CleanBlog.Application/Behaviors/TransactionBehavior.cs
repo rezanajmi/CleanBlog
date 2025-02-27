@@ -1,30 +1,36 @@
-﻿using MediatR;
+﻿using CleanBlog.Domain.SharedKernel.Extensions;
+using MediatR;
 using System.Transactions;
 
 namespace CleanBlog.Application.Behaviors
 {
     internal class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : IRequest<TResponse>
+        where TRequest : IBaseRequest
     {
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-            RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
-            var transactionOptions = new TransactionOptions
+            if (request.IsCommand())
             {
-                IsolationLevel = IsolationLevel.ReadCommitted,
-                Timeout = TransactionManager.MaximumTimeout
-            };
+                var transactionOptions = new TransactionOptions
+                {
+                    IsolationLevel = IsolationLevel.ReadCommitted,
+                    Timeout = TransactionManager.MaximumTimeout
+                };
 
-            using (var transaction = new TransactionScope(TransactionScopeOption.Required, transactionOptions,
-                TransactionScopeAsyncFlowOption.Enabled))
-            {
-                var response = await next();
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, transactionOptions,
+                    TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    var response = await next();
 
-                transaction.Complete();
+                    transaction.Complete();
 
-                return response;
+                    return response;
+                }
             }
-
+            else
+            {
+                return await next();
+            }
         }
     }
 }

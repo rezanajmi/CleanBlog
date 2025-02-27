@@ -20,7 +20,7 @@ namespace CleanBlog.Application.Queries.Category.Handlers
         {
             var categories = await repository.GetListAsync<CategoryQueryEntity>(
                 new SearchCategoriesByTitleSpec(request.SearchedTitle), ct);
-            return categories.Select(c => new GetCategoriesResult(c.Id, c.Title, c.ParentTitle)).ToList();
+            return categories.Select(c => new GetCategoriesResult(c.Id, c.Title, c.ParentId, c.ParentTitle)).ToList();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace CleanBlog.Web.Bases
     [Authorize]
     public abstract class BaseApiController : ControllerBase
     {
-        protected ActionResult SendOk([ActionResultObjectValue] object value) =>
+        protected ActionResult SendOk([ActionResultObjectValue] object value = default) =>
             value switch
             {
                 ApiResponse => base.Ok(value),

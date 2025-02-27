@@ -104,14 +104,14 @@ namespace CleanBlog.Infrastructure
             {
                 var eventBus = scope.ServiceProvider.GetRequiredService<IBus>();
 
-                eventBus.Subscribe<CategoryCreatedBusEvent>();
-                eventBus.Subscribe<CategoryUpdatedBusEvent>();
-                eventBus.Subscribe<PostCreatedBusEvent>();
-                eventBus.Subscribe<PostDeletedBusEvent>();
-                eventBus.Subscribe<PostUpdatedBusEvent>();
-                eventBus.Subscribe<CommentCreatedBusEvent>();
-                eventBus.Subscribe<UserCreatedBusEvent>();
-                eventBus.Subscribe<UserUpdatedBusEvent>();
+                await eventBus.Subscribe<CategoryCreatedBusEvent>();
+                await eventBus.Subscribe<CategoryUpdatedBusEvent>();
+                await eventBus.Subscribe<PostCreatedBusEvent>();
+                await eventBus.Subscribe<PostDeletedBusEvent>();
+                await eventBus.Subscribe<PostUpdatedBusEvent>();
+                await eventBus.Subscribe<CommentCreatedBusEvent>();
+                await eventBus.Subscribe<UserCreatedBusEvent>();
+                await eventBus.Subscribe<UserUpdatedBusEvent>();
 
                 var dbInit = scope.ServiceProvider.GetRequiredService<IDatabaseInitializer>();
                 await dbInit.MigrateAsync();

@@ -46,12 +46,12 @@ namespace CleanBlog.Application.Commands.Category.Handlers
             await repository.AddAsync(category, ct);
             await repository.SaveAsync(ct);
 
-            eventBus.Publish(new CategoryCreatedBusEvent(category));
+            await eventBus.Publish(new CategoryCreatedBusEvent(category), ct);
 
             return category.Id;
         }
 
-        public async Task<Unit> Handle(UpdateCategoryCommand request, CancellationToken ct)
+        async Task IRequestHandler<UpdateCategoryCommand>.Handle(UpdateCategoryCommand request, CancellationToken ct)
         {
             var category = await repository.GetAsync(request.Id, ct);
             if (category is null)
@@ -74,9 +74,7 @@ namespace CleanBlog.Application.Commands.Category.Handlers
             repository.Update(category);
             await repository.SaveAsync(ct);
 
-            eventBus.Publish(new CategoryUpdatedBusEvent(category));
-
-            return await Unit.Task;
+            await eventBus.Publish(new CategoryUpdatedBusEvent(category), ct);
         }
     }
 }

@@ -61,12 +61,12 @@ namespace CleanBlog.Application.Commands.Post.Handlers
             await repository.AddAsync(post, ct);
             await repository.SaveAsync(ct);
 
-            eventBus.Publish(new PostCreatedBusEvent(post));
+            await eventBus.Publish(new PostCreatedBusEvent(post), ct);
 
             return post.Id;
         }
 
-        public async Task<Unit> Handle(UpdatePostCommand request, CancellationToken ct)
+        async Task IRequestHandler<UpdatePostCommand>.Handle(UpdatePostCommand request, CancellationToken ct)
         {
             var post = await repository.GetAsync(new GetPostByIdWithCategoryAndUserSpec(request.Id), ct);
             if (post is null)
@@ -95,12 +95,10 @@ namespace CleanBlog.Application.Commands.Post.Handlers
             repository.Update(post);
             await repository.SaveAsync(ct);
 
-            eventBus.Publish(new PostUpdatedBusEvent(post));
-
-            return await Unit.Task;
+            await eventBus.Publish(new PostUpdatedBusEvent(post), ct);
         }
 
-        public async Task<Unit> Handle(DeletePostCommand request, CancellationToken ct)
+        async Task IRequestHandler<DeletePostCommand>.Handle(DeletePostCommand request, CancellationToken ct)
         {
             var post = await repository.GetAsync(request.Id, ct);
             if (post is null)
@@ -113,13 +111,11 @@ namespace CleanBlog.Application.Commands.Post.Handlers
             await repository.DeleteAsync(request.Id, ct);
             await repository.SaveAsync(ct);
 
-            eventBus.Publish(new PostDeletedBusEvent(post.Id, 
-                post.Comments.Select(c => c.Id).ToList()));
-
-            return await Unit.Task;
+            await eventBus.Publish(new PostDeletedBusEvent(post.Id, 
+                post.Comments.Select(c => c.Id).ToList()), ct);
         }
 
-        public async Task<Unit> Handle(AddCommentInPostCommand request, CancellationToken ct)
+        async Task IRequestHandler<AddCommentInPostCommand>.Handle(AddCommentInPostCommand request, CancellationToken ct)
         {
             var post = await repository.GetAsync(request.PostId, ct);
             if (post is null)
@@ -138,9 +134,7 @@ namespace CleanBlog.Application.Commands.Post.Handlers
             repository.Update(post);
             await repository.SaveAsync(ct);
 
-            eventBus.Publish(new CommentCreatedBusEvent(comment));
-
-            return await Unit.Task;
+            await eventBus.Publish(new CommentCreatedBusEvent(comment), ct);
         }
     }
 }

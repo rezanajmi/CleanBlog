@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 namespace CleanBlog.Application.Behaviors
 {
     internal class ExceptionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : IRequest<TResponse>
+        where TRequest: IBaseRequest
     {
         private readonly ILogger<TRequest> logger;
 
@@ -15,8 +15,9 @@ namespace CleanBlog.Application.Behaviors
         }
 
         public async Task<TResponse> Handle(TRequest request,
-            CancellationToken cancellationToken,
-            RequestHandlerDelegate<TResponse> next)
+            RequestHandlerDelegate<TResponse> next,
+            CancellationToken cancellationToken
+            )
         {
             try
             {

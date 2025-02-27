@@ -1,0 +1,15 @@
+G:\Training\CleanBlog\src\CleanBlog.Application\bin\Debug\net6.0\CleanBlog.Application.deps.json
+G:\Training\CleanBlog\src\CleanBlog.Application\bin\Debug\net6.0\CleanBlog.Application.dll
+G:\Training\CleanBlog\src\CleanBlog.Application\bin\Debug\net6.0\CleanBlog.Application.pdb
+G:\Training\CleanBlog\src\CleanBlog.Application\bin\Debug\net6.0\CleanBlog.Domain.dll
+G:\Training\CleanBlog\src\CleanBlog.Application\bin\Debug\net6.0\CleanBlog.Domain.pdb
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.csproj.AssemblyReference.cache
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.GeneratedMSBuildEditorConfig.editorconfig
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.AssemblyInfoInputs.cache
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.AssemblyInfo.cs
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.csproj.CoreCompileInputs.cache
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.csproj.CopyComplete
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.dll
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\refint\CleanBlog.Application.dll
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\CleanBlog.Application.pdb
+G:\Training\CleanBlog\src\CleanBlog.Application\obj\Debug\net6.0\ref\CleanBlog.Application.dll

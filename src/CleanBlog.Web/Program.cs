@@ -2,8 +2,8 @@ using CleanBlog.Web;
 using CleanBlog.Infrastructure;
 using CleanBlog.Application;
 using CleanBlog.Web.Middlewares;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Serilog;
+using Asp.Versioning.ApiExplorer;
 
 var builder = WebApplication.CreateBuilder(args);
 

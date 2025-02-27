@@ -4,8 +4,8 @@ using MediatR;
 
 namespace CleanBlog.Application.Behaviors
 {
-    internal class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
-        where TRequest : IRequest<TResponse>
+    internal class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest: IBaseRequest
     {
         private readonly IEnumerable<IValidator<TRequest>> validators;
 
@@ -14,7 +14,7 @@ namespace CleanBlog.Application.Behaviors
             this.validators = validators;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             if (request.IsCommand() && validators.Any())
             {

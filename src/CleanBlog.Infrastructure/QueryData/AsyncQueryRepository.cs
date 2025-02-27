@@ -32,7 +32,7 @@ namespace CleanBlog.Infrastructure.QueryData
             var data = database.GetCollection<TQueryEntity>(typeof(TQueryEntity).Name).AsQueryable();
             if (spec is not null)
             {
-                data = (IMongoQueryable<TQueryEntity>)spec.Query(data);
+                data = spec.Query(data);
             }
             return await data.FirstOrDefaultAsync(ct);
         }
@@ -43,7 +43,7 @@ namespace CleanBlog.Infrastructure.QueryData
             var data = database.GetCollection<TQueryEntity>(typeof(TQueryEntity).Name).AsQueryable();
             if (spec is not null)
             {
-                data = (IMongoQueryable<TQueryEntity>)spec.Query(data);
+                data = spec.Query(data);
             }
             return await data.ToListAsync(ct);
         }
@@ -54,7 +54,7 @@ namespace CleanBlog.Infrastructure.QueryData
             var data = database.GetCollection<TQueryEntity>(typeof(TQueryEntity).Name).AsQueryable();
             if (spec is not null)
             {
-                data = (IMongoQueryable<TQueryEntity>)spec.Query(data);
+                data = spec.Query(data);
             }
             return await Task.FromResult(data.ToPagedList(page, pageItemCount));
         }

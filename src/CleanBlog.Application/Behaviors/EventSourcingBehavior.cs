@@ -5,7 +5,7 @@ using MediatR;
 namespace CleanBlog.Application.Behaviors
 {
     internal class EventSourcingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : IRequest<TResponse>
+        where TRequest : IBaseRequest
     {
         private readonly IEventSourcing eventSourcing;
 
@@ -14,7 +14,7 @@ namespace CleanBlog.Application.Behaviors
             this.eventSourcing = eventSourcing;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             var response = await next();
 

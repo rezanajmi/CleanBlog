@@ -8,7 +8,7 @@ namespace CleanBlog.Application.Validators.User
         public UpdatePasswordCommandValidator()
         {
             RuleFor(x => x.CurrentPassword).NotEmpty().MinimumLength(6);
-            RuleFor(x => x.NewPassword).NotEmpty().MinimumLength(6).Equal(x => x.ConfirmNewPassword);
+            RuleFor(x => x.NewPassword).NotEmpty().MinimumLength(6).Equal(x => x.ConfirmNewPassword).WithMessage("Confirm Password is not equal to Password.");
         }
     }
 }

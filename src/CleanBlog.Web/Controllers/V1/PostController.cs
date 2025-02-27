@@ -6,6 +6,7 @@ using CleanBlog.Application.Queries.Post;
 using CleanBlog.Application.Commands.Post;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Asp.Versioning;
 
 namespace CleanBlog.Web.Controllers.V1
 {

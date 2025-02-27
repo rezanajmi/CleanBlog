@@ -25,15 +25,42 @@ namespace CleanBlog.Infrastructure.Identity
                 new Claim(ClaimTypes.Name, username)
             };
 
-            var token = new JwtSecurityToken(
-                issuer: jwtSettings.Issuer,
-                audience: jwtSettings.Audience,
-                claims: claims,
-                expires: DateTime.Now.AddDays(10),
-                signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)
-                );
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Issuer = jwtSettings.Issuer,
+                Audience = jwtSettings.Audience,
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddDays(10),
+                SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)
+            };
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
         }
+
+        // Another code for generate token
+        //public string GenerateToken(Guid guid, string username)
+        //{
+        //    var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Key));
+
+        //    var claims = new List<Claim>()
+        //    {
+        //        new Claim(ClaimTypes.NameIdentifier, guid.ToString()),
+        //        new Claim(ClaimTypes.Name, username)
+        //    };
+
+        //    var token = new JwtSecurityToken(
+        //        issuer: jwtSettings.Issuer,
+        //        audience: jwtSettings.Audience,
+        //        claims: claims,
+        //        notBefore: null,
+        //        expires: DateTime.UtcNow.AddDays(10),
+        //        signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)
+        //        );
+
+        //    return new JwtSecurityTokenHandler().WriteToken(token);
+        //}
     }
 }
